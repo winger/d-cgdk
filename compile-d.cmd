@@ -1,0 +1,1 @@
+make > compilation.log 2>&1

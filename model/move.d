@@ -29,6 +29,13 @@ class Move {
     immutable int x;
     immutable int y;
     
+    this(ActionType action, Direction direction, int x, int y) {
+        this.action = action;
+        this.direction = direction;
+        this.x = x;
+        this.y = y;
+    }
+    
     static Move endTurn() {
     	return new Move(ActionType.END_TURN, Direction.UNKNOWN_DIRECTION, 0, 0);
     }
@@ -67,12 +74,5 @@ class Move {
     
     static Move requestEnemyDisposition() {
     	return new Move(ActionType.REQUEST_ENEMY_DISPOSITION, Direction.UNKNOWN_DIRECTION, 0, 0);
-    }
-private:
-    this(ActionType action, Direction direction, int x, int y) {
-    	this.action = action;
-    	this.direction = direction;
-    	this.x = x;
-    	this.y = y;
     }
 };
