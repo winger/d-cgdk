@@ -30,7 +30,7 @@ public:
     }
     
     int readTeamSize() {
-        assert(read!MessageType == MessageType.TEAM_SIZE);
+        enforce(read!MessageType == MessageType.TEAM_SIZE);
         return read!int;
     }
     
@@ -68,8 +68,8 @@ private:
     bool[] cellVisibilities = null;
     
     T read(T : Game)() {
-        assert(read!MessageType == MessageType.GAME_CONTEXT);
-        assert(read!bool);
+        enforce(read!MessageType == MessageType.GAME_CONTEXT);
+        enforce(read!bool);
     
         int moveCount = read!int;
         int lastPlayerEliminationScore = read!int;
@@ -118,7 +118,7 @@ private:
             return null;
         }
     
-        assert(messageType == MessageType.PLAYER_CONTEXT);
+        enforce(messageType == MessageType.PLAYER_CONTEXT);
     
         if (!read!bool) {
             return null;
@@ -131,7 +131,7 @@ private:
     }
     
     T read(T : Player)() {
-        assert(read!bool);
+        enforce(read!bool);
         long id = read!long;
         string name = read!string;
         int score = read!int;
@@ -142,7 +142,7 @@ private:
     }
     
     T read(T : Trooper)() {
-        assert(read!bool);
+        enforce(read!bool);
         long id = read!long;
         int x = read!int;
         int y = read!int;
@@ -160,7 +160,7 @@ private:
         int shootCost = read!int;
         int[TrooperStance.max + 1] damage = read!(int[TrooperStance.max + 1]).reverse;
         int currentDamage = read!int;
-        assert(currentDamage == damage[stance]);
+        enforce(currentDamage == damage[stance]);
         auto holdingBonus = read!(bool[BonusType.max + 1]);
     
         return new Trooper(id, x, y, playerId, teammateIndex, teammate, type,
@@ -169,7 +169,7 @@ private:
     }
     
     Bonus read(T : Bonus)() {
-        assert(read!bool);
+        enforce(read!bool);
         long id = read!long;
         int x = read!int;
         int y = read!int;
@@ -179,7 +179,7 @@ private:
     }
     
     T read(T : World)() {
-        assert(read!bool);
+        enforce(read!bool);
         int moveIndex = read!int;
         int width = read!int;
         int height = read!int;
@@ -200,11 +200,11 @@ private:
     //irregular case
     bool[] readCellVisibilities() {
         int width = read!int;
-        assert(width >= 0);
+        enforce(width >= 0);
         int height = read!int;
-        assert(height >= 0);
+        enforce(height >= 0);
         int stanceCount = read!int;
-        assert(stanceCount == TrooperStance.max + 1);
+        enforce(stanceCount == TrooperStance.max + 1);
         auto data = readBytesRuntime(width * height * width * height * stanceCount);
         return array(map!"a != 0"(data));
     }
@@ -219,7 +219,7 @@ private:
     
     string read(T : string)() {
         int len = read!int;
-        assert(len >= 0);
+        enforce(len >= 0);
         return cast(string) readBytesRuntime(len);
     }
     
@@ -230,7 +230,7 @@ private:
     
     T[] read(T : T[])() {
         int len = read!int;
-        assert(len >= 0);
+        enforce(len >= 0);
         
         T[] ret = new T[len];
         foreach (ref elem; ret) {
@@ -273,7 +273,7 @@ private:
         size_t offset = 0;
         while (offset < bytes.length) {
             auto sent = socket.send(bytes);
-            assert(sent > 0);
+            enforce(sent > 0);
             offset += sent;
         }
         debug writeln("write: ", bytes);

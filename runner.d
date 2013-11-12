@@ -17,6 +17,7 @@ void main(string[] args) {
     auto client = new RemoteProcessClient(host, port);
     client.writeToken(token);
     int teamSize = client.readTeamSize();
+    debug writefln("Team size: %d", teamSize);
     client.writeProtocolVersion();
     immutable game = cast(immutable) client.readGameContext();
 
