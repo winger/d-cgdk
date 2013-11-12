@@ -1,3 +1,5 @@
+module my_strategy;
+
 import std.random;
 import model.game, model.trooper, model.move, model.world;
 
