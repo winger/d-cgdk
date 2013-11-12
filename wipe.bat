@@ -1,1 +1,1 @@
-make clean
+del /F /Q MyStrategy.exe *.obj
