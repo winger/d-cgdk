@@ -6,13 +6,13 @@ import my_strategy;
 import model.game, model.player_context, model.trooper, model.move;
 
 void main(string[] args) {
-    auto host = "localhost";
+    auto host = "127.0.0.1";
     auto port = "31001";
     auto token = "0000000000000000";
     if (args.length == 4) {
-        host = args[0];
-        port = args[1];
-        token = args[2];
+        host = args[1];
+        port = args[2];
+        token = args[3];
     }
     auto client = new RemoteProcessClient(host, port);
     client.writeToken(token);
