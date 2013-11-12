@@ -1,5 +1,5 @@
 DC = dmd
-DFLAGS = -O
+DFLAGS = -O -release -inline -noboundscheck
 
 LOCAL_RUNNER = java -jar local-runner.jar true false 3 result.txt true false
 ifeq ($(OS), Windows_NT)
