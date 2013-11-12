@@ -23,4 +23,4 @@ run : MyStrategy
 	./MyStrategy
 
 clean :
-	$(RM) MyStrategy *.o compilation.log result.txt
+	$(RM) MyStrategy MyStrategy.exe *.o *.obj compilation.log result.txt
