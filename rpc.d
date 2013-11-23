@@ -265,7 +265,7 @@ private:
         while (offset < byteCount) {
             offset += socket.receive(bytes[offset .. bytes.length]);
         }
-        debug writeln("read: ", bytes);
+        debug(io) writeln("read: ", bytes);
         return bytes;
     }
     
@@ -276,6 +276,6 @@ private:
             enforce(sent > 0);
             offset += sent;
         }
-        debug writeln("write: ", bytes);
+        debug(io) writeln("write: ", bytes);
     }
 }

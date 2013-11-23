@@ -12,11 +12,11 @@ class Game {
     immutable int[TrooperStance.max + 1] moveCost;
     immutable int commanderAuraBonusActionPoints;
     immutable double commanderAuraRange;
+    immutable int commanderRequestEnemyDispositionCost;
+    immutable int commanderRequestEnemyDispositionMaxOffset;
     immutable int fieldMedicHealCost;
     immutable int fieldMedicHealBonusHitpoints;
     immutable int fieldMedicHealSelfBonusHitpoints;
-    immutable int commanderRequestEnemyDispositionCost;
-    immutable int commanderRequestEnemyDispositionMaxOffset;
     immutable double[TrooperStance.max + 1] sniperStealthBonus;
     immutable double[TrooperStance.max + 1] sniperShootingRangeBonus;
     immutable double scoutStealthBonusNegation;
@@ -35,8 +35,8 @@ class Game {
         int trooperEliminationScore, double trooperDamageScoreFactor,
         int stanceChangeCost, immutable int[TrooperStance.max + 1] moveCost,
         int commanderAuraBonusActionPoints, double commanderAuraRange,
-        int fieldMedicHealCost, int fieldMedicHealBonusHitpoints, int fieldMedicHealSelfBonusHitpoints,
         int commanderRequestEnemyDispositionCost, int commanderRequestEnemyDispositionMaxOffset,
+        int fieldMedicHealCost, int fieldMedicHealBonusHitpoints, int fieldMedicHealSelfBonusHitpoints,
         immutable double[TrooperStance.max + 1] sniperStealthBonus,
         immutable double[TrooperStance.max + 1] sniperShootingRangeBonus, double scoutStealthBonusNegation,
         int grenadeThrowCost, double grenadeThrowRange, int grenadeDirectDamage, int grenadeCollateralDamage,
